@@ -20,7 +20,7 @@ def handler(ctx, data: io.BytesIO = None):
 #        response_data=json.dumps(resp),
 #        headers={"Content-Type": "application/json"}
 #    )
-    return signer
+    return dir(signer)
 
 # List compartments ------------------------------------------------------------
 def list_compartments(signer):
