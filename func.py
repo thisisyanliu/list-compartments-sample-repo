@@ -13,14 +13,13 @@ import oci.identity
 
 def handler(ctx, data: io.BytesIO = None):
     signer = oci.auth.signers.get_resource_principals_signer()
-    print(signer)
     resp = list_compartments(signer)  # function defined below
-#    return response.Response(
-#        ctx,
-#        response_data=json.dumps(resp),
-#        headers={"Content-Type": "application/json"}
-#    )
-    return dir(signer)
+    signer_properties = []
+    for prop in dir(signer):
+        if not prop.startswith('_'):
+            value = getattr(signer, prop)
+            signer_properties.append(f"{prop}: {value}")
+    return dir(signer_properties)
 
 # List compartments ------------------------------------------------------------
 def list_compartments(signer):
