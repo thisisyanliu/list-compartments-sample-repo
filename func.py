@@ -15,11 +15,12 @@ def handler(ctx, data: io.BytesIO = None):
     signer = oci.auth.signers.get_resource_principals_signer()
     print(signer)
     resp = list_compartments(signer)  # function defined below
-    return response.Response(
-        ctx,
-        response_data=json.dumps(resp),
-        headers={"Content-Type": "application/json"}
-    )
+#    return response.Response(
+#        ctx,
+#        response_data=json.dumps(resp),
+#        headers={"Content-Type": "application/json"}
+#    )
+    return signer
 
 # List compartments ------------------------------------------------------------
 def list_compartments(signer):
