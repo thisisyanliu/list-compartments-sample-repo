@@ -19,7 +19,7 @@ def handler(ctx, data: io.BytesIO = None):
         if not prop.startswith('_'):
             value = getattr(signer, prop)
             signer_properties.append(f"{prop}: {value}")
-    return dir(signer_properties)
+    return signer_properties
 
 # List compartments ------------------------------------------------------------
 def list_compartments(signer):
